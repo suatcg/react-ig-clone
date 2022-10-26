@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import FirebaseContext from '../context/firebase';
 import UserContext from '../context/user';
 import * as ROUTES from '../constants/routes';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 export default function Header() {
   const { firebase } = useContext(FirebaseContext);
@@ -63,13 +65,18 @@ export default function Header() {
                     />
                   </svg>
                 </button>
+
                 <div className="flex items-center cursor-pointer">
                   <Link to={`/p/${user.displayName}`}>
-                    <img
-                      className="rounded-full h-8 w-8 mr-6 flex"
-                      src={`/images/avatars/${user.displayName}.jpg`}
-                      alt={`${user.displayName} profile`}
-                    />
+                    {!user.displayName ? (
+                      <Skeleton circle={true} height={32} width={32} className="mr-6" />
+                    ) : (
+                      <img
+                        className="rounded-full h-8 w-8 mr-6 flex"
+                        src={`/images/avatars/${user.displayName}.jpg`}
+                        alt={`${user.displayName} profile`}
+                      />
+                    )}
                   </Link>
                 </div>
               </>
