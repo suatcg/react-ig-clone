@@ -4,9 +4,8 @@ import 'react-loading-skeleton/dist/skeleton.css';
 import useSuggestedProfiles from '../../hooks/use-suggestedProfiles';
 import SuggestedProfile from './suggested-profile';
 
-export default function Suggestions({ userId, following }) {
+export default function Suggestions({ userId, following, loggedInUserDocId }) {
   const profiles = useSuggestedProfiles(userId, following);
-  console.log(profiles);
 
   return !profiles ? (
     <Skeleton count={1} height={150} className="mt-5" />
@@ -19,10 +18,11 @@ export default function Suggestions({ userId, following }) {
         {profiles.map((profile) => (
           <SuggestedProfile
             key={profile.docId}
-            userDocId={profile.docId}
+            profileDocId={profile.docId}
             username={profile.username}
             profileId={profile.userId}
             userId={userId}
+            loggedInUserDocId={loggedInUserDocId}
           />
         ))}
       </div>
@@ -33,4 +33,5 @@ export default function Suggestions({ userId, following }) {
 Suggestions.propTypes = {
   userId: PropTypes.string,
   following: PropTypes.array,
+  loggedInUserDocId: PropTypes.string,
 };
