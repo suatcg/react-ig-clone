@@ -19,7 +19,7 @@ export default function Signup() {
   const { firebase } = useContext(FirebaseContext);
 
   const [username, setUsername] = useState('');
-  const [fullname, setFullname] = useState('');
+  const [fullName, setFullName] = useState('');
 
   const [emailAddress, setEmailAddress] = useState('');
   const [password, setPassword] = useState('');
@@ -51,7 +51,7 @@ export default function Signup() {
         await firebase.firestore().collection('users').add({
           userId: createdUserResult.user.uid,
           username: username.toLocaleLowerCase(),
-          fullname,
+          fullName,
           emailAddress: emailAddress.toLocaleLowerCase(),
           following: [],
           dataCreated: Date.now(),
@@ -59,7 +59,7 @@ export default function Signup() {
 
         history.push(ROUTES.DASHBOARD);
       } catch (error) {
-        setFullname('');
+        setFullName('');
         setEmailAddress('');
         setPassword('');
         setError(error.message);
@@ -71,12 +71,19 @@ export default function Signup() {
   return (
     <div className="container flex mx-auto max-w-screen-md items-center h-screen">
       <div className="flex w-3/5">
-        <img src="/images/iphone-with-profile.jpg" alt="iPhone with Instagram app" />
+        <img
+          src="/images/iphone-with-profile.jpg"
+          alt="iPhone with Instagram app"
+        />
       </div>
       <div className="flex flex-col w-2/5">
         <div className="flex flex-col items-center bg-white p-4 border border-gray-primary mb-4 rounded">
           <h1 className="flex justify-center w-full">
-            <img src="/images/logo.png" alt="Instagram" className="mt-2 w-6/12 mb-4" />
+            <img
+              src="/images/logo.png"
+              alt="Instagram"
+              className="mt-2 w-6/12 mb-4"
+            />
           </h1>
           {error && <p className="mb-4 text-xs text-red-primary">{error}</p>}
 
@@ -94,8 +101,8 @@ export default function Signup() {
               type="text"
               placeholder="Full Name"
               className="text-sm text-gray-base w-full mr-3 py-5 px-4 h-2 border border-gray-primary rounded mb-2"
-              onChange={(e) => setFullname(e.target.value)}
-              value={fullname}
+              onChange={(e) => setFullName(e.target.value)}
+              value={fullName}
             />
             <input
               aria-label="Enter your email address"

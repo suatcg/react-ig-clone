@@ -5,11 +5,11 @@ module.exports = {
     removeDeprecatedGapUtilities: true,
   },
   theme: {
+    fill: (theme) => ({
+      red: theme('colors.red.primary'),
+    }),
     extend: {},
     colors: {
-      // fill: (theme) => ({
-      //   red: theme('colors.red.primary'),
-      // }),
       white: '#fff',
       blue: {
         medium: '#005c98',
