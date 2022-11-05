@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { Route, Redirect } from 'react-router-dom';
 
 export default function IsUserLoggedIn({
@@ -29,8 +29,8 @@ export default function IsUserLoggedIn({
   );
 }
 
-IsUserLoggedIn.propTypes = {
-  user: PropTypes.object,
-  loggedInPath: PropTypes.string.isRequired,
-  children: PropTypes.object.isRequired,
-};
+// IsUserLoggedIn.propTypes = {
+//   user: PropTypes.object,
+//   loggedInPath: PropTypes.string,
+//   children: PropTypes.object,
+// };

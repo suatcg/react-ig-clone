@@ -120,3 +120,37 @@ export async function getPhotos(userId, following) {
 
   return photosWithUserDetails;
 }
+
+// export async function getUserIdByUsername(username) {}
+
+export async function getUserPhotosByUsername(username) {
+  const [user] = await getUserByUsername(username);
+
+  const result = await firebase
+    .firestore()
+    .collection('photos')
+    .where('userId', '==', user.userId)
+    .get();
+
+  return result.docs.map((item) => ({ ...item.data(), docId: item.id }));
+  // console.log('userId', userId);
+}
+
+export async function isUserFollowingProfile(
+  loggedInUserUsername,
+  profileUserId
+) {
+  const result = await firebase
+    .firestore()
+    .collection('users')
+    .where('username', '==', loggedInUserUsername) // suatcan (active logged in user)
+    .where('following', 'array-contains', profileUserId)
+    .get();
+
+  const [response = {}] = result.docs.map((item) => ({
+    ...item.data(),
+    docId: item.id,
+  }));
+
+  console.log('response', response);
+}
