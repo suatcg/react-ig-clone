@@ -4,6 +4,7 @@ import { getUserByUsername } from '../services/firebase';
 import * as ROUTES from '../constants/routes';
 import Header from '../components/header';
 import UserProfile from '../components/profile/index';
+import Photos from '../components/profile/photos';
 
 export default function Profile() {
   const { username } = useParams();
@@ -12,11 +13,10 @@ export default function Profile() {
 
   useEffect(() => {
     async function checkUserExist() {
-      const user = await getUserByUsername(username);
-      // console.log(user);
+      const [user] = await getUserByUsername(username);
 
-      if (user.length > 0) {
-        setUser(user[0]);
+      if (user.userId) {
+        setUser(user);
       } else {
         history.push(ROUTES.NOT_FOUND);
       }

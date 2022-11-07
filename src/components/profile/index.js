@@ -24,7 +24,7 @@ export default function UserProfile({ user }) {
       dispatch({
         profile: user,
         photosCollection: photos,
-        followerCount: user?.followers?.length,
+        followerCount: user.followers.length,
       });
     }
 
@@ -39,19 +39,18 @@ export default function UserProfile({ user }) {
         setFollowerCount={dispatch}
       />
       <Photos photos={photosCollection} />
-      <p>Hello</p>
     </>
   );
 }
 
 UserProfile.propTypes = {
   user: PropTypes.shape({
-    dateCreated: PropTypes.number.isRequired,
-    emailAddress: PropTypes.string.isRequired,
-    followers: PropTypes.array.isRequired,
-    following: PropTypes.array.isRequired,
-    fullName: PropTypes.string.isRequired,
-    userId: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
+    dataCreated: PropTypes.number,
+    emailAddress: PropTypes.string,
+    followers: PropTypes.array,
+    following: PropTypes.array,
+    fullName: PropTypes.string,
+    userId: PropTypes.string,
+    username: PropTypes.string,
   }).isRequired,
 };
