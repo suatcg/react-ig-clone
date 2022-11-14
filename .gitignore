@@ -12,7 +12,7 @@ suatcan.JPG
 # production
 /build
 .eslintrc.json
-/lib
+/lib/firebase.js
 
 
 # misc
