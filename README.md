@@ -10,7 +10,7 @@
 
 ### Links
 
-- Live Site URL: [LIVE SITE](https://react-ig-clone-8r7v-dixz5a8q9-suatcg.vercel.app/)
+- Live Site URL: [LIVE SITE](https://ig-clone-react.vercel.app/login)
 
 ### Built with
 
