@@ -12,6 +12,8 @@ suatcan.JPG
 # production
 /build
 .eslintrc.json
+/lib
+
 
 # misc
 .DS_Store
